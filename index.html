@@ -676,6 +676,7 @@ function getDb(){
           catch(e){ reportProblem(e, "anonymous sign-in"); }
         }
         const fs = firebase.firestore(app);
+                      try{ fs.settings({ experimentalForceLongPolling: true }); }catch(e){}
         return {
           doc(path){
             const ref = fs.doc(path);
